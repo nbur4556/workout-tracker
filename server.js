@@ -7,17 +7,7 @@ const PORT = 3000;
 app.use(express.static('public'));
 
 // Routes
-app.get('/', (req, res) => {
-    res.sendFile(`${__dirname}\\public\\index.html`);
-});
-
-app.get('/stats', (req, res) => {
-    res.sendFile(`${__dirname}\\public\\stats.html`);
-});
-
-app.get('/exercise', (req, res) => {
-    res.sendFile(`${__dirname}\\public\\exercise.html`);
-});
+require('./routes/html-routes.js')(app);
 
 // Server listen
 app.listen(PORT, () => {
