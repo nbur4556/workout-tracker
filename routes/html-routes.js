@@ -1,18 +1,18 @@
-const rootPath = module.parent.path;
+const __root = module.parent.path;
 
 module.exports = app => {
     // Home Page
     app.get('/', (req, res) => {
-        res.sendFile(`${rootPath}\\public\\index.html`);
+        res.sendFile(`${__root}\\public\\index.html`);
     });
 
     // Stats Page
     app.get('/stats', (req, res) => {
-        res.sendFile(`${rootPath}\\public\\stats.html`);
+        res.sendFile(`${__root}\\public\\stats.html`);
     });
 
     // Exercise Page
     app.get('/exercise', (req, res) => {
-        res.sendFile(`${rootPath}\\public\\exercise.html`);
+        res.sendFile(`${__root}\\public\\exercise.html`);
     });
 }
