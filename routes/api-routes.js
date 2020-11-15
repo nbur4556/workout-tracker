@@ -10,21 +10,12 @@ module.exports = app => {
     // addExercise method
     app.put('/api/workouts/:id', (req, res) => {
         let workoutId = req.params.id;
-
-        console.log(workoutId);
-
         if (workoutId == "undefined") {
-            console.log("USE LENGTH");
             workoutId = testWorkouts.length - 1;
         }
-
-        console.log(workoutId);
-
         testWorkouts[workoutId].workouts.push(req.body);
 
-        console.log(testWorkouts[workoutId]);
-
-        res.json(testWorkouts);
+        res.json(req.body);
     });
 
     // createWorkout method
