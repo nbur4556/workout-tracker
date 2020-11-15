@@ -10,11 +10,6 @@ module.exports = app => {
     // addExercise method
     app.put('/api/workouts/:id', (req, res) => {
         let workoutId = req.params.id;
-
-        // If undefined use last pushed exercise
-        if (workoutId == "undefined") {
-            workoutId = testWorkouts.length - 1;
-        }
         testWorkouts[workoutId].workouts.push(req.body);
 
         res.json(req.body);
@@ -27,7 +22,7 @@ module.exports = app => {
         testWorkouts[workoutId]._id = workoutId;
         testWorkouts[workoutId].workouts = new Array();
 
-        res.json(testWorkouts);
+        res.json(testWorkouts[workoutId]);
     });
 
     // getWorkoutsInRange method
