@@ -7,6 +7,7 @@ const PORT = 3000;
 app.use(express.static('public'));
 
 // Routes
+require('./routes/api-routes.js')(app);
 require('./routes/html-routes.js')(app);
 
 // Server listen
