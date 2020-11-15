@@ -10,7 +10,10 @@ module.exports = app => {
     // addExercise method
     app.put('/api/workouts/:id', (req, res) => {
         let workoutId = req.params.id;
-        testWorkouts[workoutId].workouts.push(req.body);
+        testWorkouts[workoutId].exercises.push(req.body);
+
+        // Update duration
+        testWorkouts[workoutId].totalDuration += req.body.duration;
 
         res.json(req.body);
     });
@@ -19,8 +22,12 @@ module.exports = app => {
     app.post('/api/workouts', (req, res) => {
         let workoutId = testWorkouts.length;
         testWorkouts.push(req.body);
+
+        // Workout Variables
         testWorkouts[workoutId]._id = workoutId;
-        testWorkouts[workoutId].workouts = new Array();
+        testWorkouts[workoutId].day = Date.now();
+        testWorkouts[workoutId].totalDuration = 0;
+        testWorkouts[workoutId].exercises = new Array();
 
         res.json(testWorkouts[workoutId]);
     });
