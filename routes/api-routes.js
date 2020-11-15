@@ -9,8 +9,20 @@ module.exports = app => {
 
     // addExercise method
     app.put('/api/workouts/:id', (req, res) => {
-        testWorkouts[0].workout = new Array();
-        testWorkouts[0].workout.push(req.body);
+        let workoutId = req.params.id;
+
+        console.log(workoutId);
+
+        if (workoutId == "undefined") {
+            console.log("USE LENGTH");
+            workoutId = testWorkouts.length - 1;
+        }
+
+        console.log(workoutId);
+
+        testWorkouts[workoutId].workouts.push(req.body);
+
+        console.log(testWorkouts[workoutId]);
 
         res.json(testWorkouts);
     });
@@ -18,12 +30,11 @@ module.exports = app => {
     // createWorkout method
     app.post('/api/workouts', (req, res) => {
         let workoutId = testWorkouts.length;
-        console.log(workoutId);
-
         testWorkouts.push(req.body);
-        testWorkouts[workoutId].id = workoutId;
+        testWorkouts[workoutId]._id = workoutId;
+        testWorkouts[workoutId].workouts = new Array();
 
-        console.log(testWorkouts[workoutId]);
+        console.log(testWorkouts);
 
         res.json(testWorkouts);
     });
