@@ -9,17 +9,21 @@ module.exports = app => {
 
     // addExercise method
     app.put('/api/workouts/:id', (req, res) => {
-        console.log(req.body);
         testWorkouts[0].workout = new Array();
         testWorkouts[0].workout.push(req.body);
-        console.log(testWorkouts);
 
         res.json(testWorkouts);
     });
 
     // createWorkout method
     app.post('/api/workouts', (req, res) => {
+        let workoutId = testWorkouts.length;
+        console.log(workoutId);
+
         testWorkouts.push(req.body);
+        testWorkouts[workoutId].id = workoutId;
+
+        console.log(testWorkouts[workoutId]);
 
         res.json(testWorkouts);
     });
