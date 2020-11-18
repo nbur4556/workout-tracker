@@ -14,8 +14,14 @@ WorkoutController.prototype.createWorkout = cb => {
         .catch(({ message }) => { cb(message) });
 }
 
-WorkoutController.prototype.readWorkout = () => {
-    return "Read Workout";
+WorkoutController.prototype.readWorkout = (id, cb) => {
+    db.Workout.findOne({ _id: id })
+        .then(data => {
+            cb(data);
+        })
+        .catch(err => {
+            cb(err);
+        })
 }
 
 WorkoutController.prototype.updateWorkout = (id, updateBody, cb) => {
