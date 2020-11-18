@@ -9,11 +9,9 @@ WorkoutController.prototype.createWorkout = cb => {
         day: Date.now(),
         exercises: new Array(),
         totalDuration: 1
-    }).then(data => {
-        cb(data);
-    }).catch(({ message }) => {
-        cb(message);
-    });
+    })
+        .then(data => { cb(data); })
+        .catch(({ message }) => { cb(message); });
 }
 
 WorkoutController.prototype.readWorkout = () => {
@@ -24,8 +22,10 @@ WorkoutController.prototype.updateWorkout = () => {
     return "Update Workout";
 }
 
-WorkoutController.prototype.deleteWorkout = () => {
-    return "Delete Workout";
+WorkoutController.prototype.deleteWorkout = (id, cb) => {
+    db.Workout.deleteOne({ _id: id })
+        .then(data => { cb(data); })
+        .catch(({ message }) => { cb(message); });
 }
 
 module.exports = WorkoutController;

@@ -30,7 +30,10 @@ const ExerciseController = require('./controllers/exercise-controller.js');
 const workoutController = new WorkoutController();
 const exerciseController = new ExerciseController();
 
-workoutController.createWorkout(data => {
-    console.log(data);
-});
+// workoutController.createWorkout(data => {
+//     console.log(data);
+// });
 
+// workoutController.deleteWorkout("5fb5862575cc3136a0fa9c13", data => {
+//     console.log(data);
+// });
