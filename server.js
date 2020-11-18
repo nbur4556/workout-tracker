@@ -45,6 +45,10 @@ const exerciseController = new ExerciseController();
 //     console.log(response);
 // });
 
-// workoutController.deleteWorkout("5fb5862575cc3136a0fa9c13", response => {
+// workoutController.addToExercises("5fb585271e46d22ed07503d8", "test", response => {
 //     console.log(response);
 // });
+
+workoutController.deleteWorkout("5fb585271e46d22ed07503d8", response => {
+    console.log(response);
+});
