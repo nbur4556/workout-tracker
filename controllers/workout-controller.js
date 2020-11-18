@@ -31,6 +31,8 @@ WorkoutController.prototype.deleteWorkout = () => {
     return "Delete Workout";
 }
 
+module.exports = WorkoutController;
+
 // Testing
 const workoutController = new WorkoutController();
 
@@ -38,5 +40,3 @@ console.log(workoutController.createWorkout());
 console.log(workoutController.readWorkout());
 console.log(workoutController.updateWorkout());
 console.log(workoutController.deleteWorkout());
-
-module.exports = WorkoutController;
