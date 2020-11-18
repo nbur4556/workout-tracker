@@ -1,6 +1,6 @@
 // Mongoose Database
 const mongoose = require('mongoose');
-const db = require('./models/database.js');
+const db = require('../models/database.js');
 
 // db.ResistanceExercise.create({
 //     name: "Test",
