@@ -18,10 +18,8 @@ WorkoutController.prototype.readWorkout = () => {
     return "Read Workout";
 }
 
-WorkoutController.prototype.updateWorkoutDay = (id, day, cb) => {
-    db.Workout.updateOne({ _id: id }, {
-        day: day
-    })
+WorkoutController.prototype.updateWorkout = (id, updateBody, cb) => {
+    db.Workout.updateOne({ _id: id }, updateBody)
         .then(data => { cb(data) })
         .catch(err => { cb(err) });
 }

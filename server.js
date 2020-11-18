@@ -42,9 +42,12 @@ const exerciseController = new ExerciseController();
 //     console.log(response);
 // });
 
-// workoutController.updateWorkoutDay("5fb585271e46d22ed07503d8", Date.now(), response => {
-//     console.log(response);
-// });
+workoutController.updateWorkout("5fb585271e46d22ed07503d8", {
+    day: Date.now(),
+    totalDuration: 7,
+}, response => {
+    console.log(response);
+});
 
 // workoutController.deleteWorkout("5fb5862575cc3136a0fa9c13", response => {
 //     console.log(response);
