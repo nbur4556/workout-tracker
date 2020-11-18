@@ -1,53 +1,57 @@
-// Mongoose Database
-const mongoose = require('mongoose');
-const db = require('../models/database.js');
+
+const database = require('../models/database.js');
 
 const ExerciseController = function () { }
 
 // Cardio Exercise Methods
-ExerciseController.prototype.createCardioExercise = () => {
-    // db.CardioExercise.create({
-    //     name: "Test",
-    //     duration: 1,
-    //     distance: 2,
-    //     type: "Cardio"
-    // }).then(data => {
-    //     console.log(data);
-    // }).catch(({ message }) => {
-    //     console.log(message);
-    // });
-
-    return "Create Cardio Exercise";
+ExerciseController.prototype.createCardioExercise = (createBody, callback) => {
+    database.CardioExercise.create(createBody)
+        .then(data => { callback(data) })
+        .catch(err => { callback(err) });
 }
 
-ExerciseController.prototype.readCardioExercise = () => {
-    return "Read Cardio Exercise";
+ExerciseController.prototype.readCardioExercise = (id, callback) => {
+    database.CardioExercise.findOne({ _id: id })
+        .then(data => { callback(data) })
+        .catch(err => { callback(err) });
 }
 
-ExerciseController.prototype.updateCardioExercise = () => {
-    return "Update Cardio Exercise";
+ExerciseController.prototype.updateCardioExercise = (id, updateBody, callback) => {
+    database.CardioExercise.updateOne({ _id: id }, updateBody)
+        .then(data => { callback(data) })
+        .catch(err => { callback(err) });
 
 }
 
-ExerciseController.prototype.deleteCardioExercise = () => {
-    return "Delete Cardio Exercise";
+ExerciseController.prototype.deleteCardioExercise = (id, callback) => {
+    database.CardioExercise.deleteOne({ _id: id })
+        .then(data => { callback(data) })
+        .catch(err => { callback(err) });
 }
 
 // Resistance Exercise Methods
-ExerciseController.prototype.createResistanceExercise = () => {
-    return "Create Resistance Exercise"
+ExerciseController.prototype.createResistanceExercise = (createBody, callback) => {
+    database.ResistanceExercise.create(createBody)
+        .then(data => { callback(data) })
+        .catch(err => { callback(err) });
 }
 
-ExerciseController.prototype.readResistanceExercise = () => {
-    return "Read Resistance Exercise"
+ExerciseController.prototype.readResistanceExercise = (id, callback) => {
+    database.ResistanceExercise.findOne({ _id: id })
+        .then(data => { callback(data) })
+        .catch(err => { callback(err) });
 }
 
-ExerciseController.prototype.updateResistanceExercise = () => {
-    return "Update Resistance Exercise"
+ExerciseController.prototype.updateResistanceExercise = (id, updateBody, callback) => {
+    database.ResistanceExercise.updateOne({ _id: id }, updateBody)
+        .then(data => { callback(data) })
+        .catch(err => { callback(err) });
 }
 
-ExerciseController.prototype.deleteResistanceExercise = () => {
-    return "Delete Resistance Exercise"
+ExerciseController.prototype.deleteResistanceExercise = (id, callback) => {
+    database.ResistanceExercise.deleteOne({ _id: id })
+        .then(data => { callback(data) })
+        .catch(err => { callback(err) });
 }
 
 module.exports = ExerciseController

@@ -7,7 +7,7 @@ WorkoutController.prototype.createWorkout = callback => {
     database.Workout.create({
         day: Date.now(),
         exercises: new Array(),
-        totalDuration: 1
+        totalDuration: 0
     })
         .then(data => { callback(data) })
         .catch(({ message }) => { callback(message) });

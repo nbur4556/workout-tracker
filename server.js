@@ -24,11 +24,67 @@ app.listen(PORT, () => {
 });
 
 // Testing Controllers
-const WorkoutController = require('./controllers/workout-controller.js');
-const ExerciseController = require('./controllers/exercise-controller.js');
+// const WorkoutController = require('./controllers/workout-controller.js');
+// const ExerciseController = require('./controllers/exercise-controller.js');
 
-const workoutController = new WorkoutController();
-const exerciseController = new ExerciseController();
+// const workoutController = new WorkoutController();
+// const exerciseController = new ExerciseController();
+
+// EXERCISE CONTROLLER
+
+// exerciseController.createCardioExercise({
+//     name: "Test",
+//     duration: 5,
+//     distance: 10,
+//     type: "Cardio"
+// }, response => {
+//     console.log(response);
+// });
+
+// exerciseController.createResistanceExercise({
+//     name: "Test",
+//     duration: 12,
+//     reps: 6,
+//     sets: 16,
+//     weight: 42,
+//     type: "Resistance"
+// }, response => {
+//     console.log(response);
+// });
+
+// exerciseController.readCardioExercise("5fb5a71fdd1d901bd0d3bc93", response => {
+//     console.log(response);
+// });
+
+// exerciseController.readResistanceExercise("5fb5a71fdd1d901bd0d3bc94", response => {
+//     console.log(response);
+// });
+
+// exerciseController.updateCardioExercise("5fb5a71fdd1d901bd0d3bc93", {
+//     name: "New Test",
+//     duration: 15,
+//     distance: 66
+// }, response => {
+//     console.log(response);
+// });
+
+// exerciseController.updateResistanceExercise("5fb5a71fdd1d901bd0d3bc94", {
+//     name: "New Test",
+//     duration: 15,
+//     reps: 999
+// }, response => {
+//     console.log(response);
+// });
+
+// exerciseController.deleteCardioExercise("5fb5a71fdd1d901bd0d3bc93", response => {
+//     console.log(response);
+// });
+
+// exerciseController.deleteResistanceExercise("5fb5a71fdd1d901bd0d3bc94", response => {
+//     console.log(response);
+// });
+
+// WORKOUT CONTROLLER
 
 // workoutController.createWorkout(response => {
 //     console.log(response);
@@ -49,6 +105,6 @@ const exerciseController = new ExerciseController();
 //     console.log(response);
 // });
 
-workoutController.deleteWorkout("5fb585271e46d22ed07503d8", response => {
-    console.log(response);
-});
+// workoutController.deleteWorkout("5fb585271e46d22ed07503d8", response => {
+//     console.log(response);
+// });
