@@ -51,15 +51,3 @@ ExerciseController.prototype.deleteResistanceExercise = () => {
 }
 
 module.exports = ExerciseController
-
-// Testing
-const exerciseController = new ExerciseController();
-
-console.log(exerciseController.createCardioExercise());
-console.log(exerciseController.readCardioExercise());
-console.log(exerciseController.updateCardioExercise());
-console.log(exerciseController.deleteCardioExercise());
-console.log(exerciseController.createResistanceExercise());
-console.log(exerciseController.readResistanceExercise());
-console.log(exerciseController.updateResistanceExercise());
-console.log(exerciseController.deleteResistanceExercise());
