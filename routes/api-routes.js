@@ -31,7 +31,7 @@ module.exports = app => {
     app.put('/api/workouts/:id', (req, res) => {
         createExerciseOfType(req.body, exercise => {
             // Insert into workout
-            workout.insertExercise(req.params.id, exercise._id, response => {
+            workout.insertExercise(req.params.id, exercise, response => {
                 res.json(response);
             });
         });
