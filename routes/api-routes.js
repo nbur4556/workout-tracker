@@ -35,7 +35,9 @@ module.exports = app => {
 
     // getWorkoutsInRange method
     app.get('/api/workouts/range', (req, res) => {
-        res.json(testWorkouts);
+        workout.readAllWorkouts(response => {
+            res.json(response);
+        })
     });
 
 
