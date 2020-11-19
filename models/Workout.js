@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 // Create Schema
 const WorkoutSchema = new Schema({
     day: Date,
+    exercises: new Array(),
     resistanceExercises: [
         {
             type: Schema.Types.ObjectId,

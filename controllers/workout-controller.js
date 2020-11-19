@@ -14,7 +14,14 @@ WorkoutController.prototype.createWorkout = callback => {
 
 WorkoutController.prototype.readAllWorkouts = callback => {
     database.Workout.find({})
-        .then(data => { callback(data) })
+        .then(data => {
+            // Concatenate Exercises
+            data.forEach(workout => {
+                workout.exercises = workout.resistanceExercises.concat(workout.cardioExercises);
+            })
+
+            callback(data);
+        })
         .catch(err => { callback(err) });
 }
 
@@ -22,7 +29,14 @@ WorkoutController.prototype.readAllWorkoutsPopulated = callback => {
     database.Workout.find({})
         .populate("resistanceExercises")
         .populate("cardioExercises")
-        .then(data => { callback(data) })
+        .then(data => {
+            // Concatenate Exercises
+            data.forEach(workout => {
+                workout.exercises = workout.resistanceExercises.concat(workout.cardioExercises);
+            })
+
+            callback(data);
+        })
         .catch(err => { callback(err) });
 }
 
