@@ -1,41 +1,54 @@
-// TEST DATA
-const testWorkouts = new Array();
+const ExerciseController = require('../controllers/exercise-controller.js');
+const WorkoutController = require('../controllers/workout-controller.js');
+
+// Controller Objects
+const workout = new WorkoutController();
+const exercise = new ExerciseController();
+
+// Determines type of exercise and returns exercise object
+function createExerciseOfType(body, cb) {
+    if (body.type === "resistance") {
+        exercise.createResistanceExercise(body, response => {
+            cb(response);
+        });
+    }
+    else if (body.type === "cardio") {
+        exercise.createCardioExercise(body, response => {
+            cb(response);
+        });
+    }
+}
 
 module.exports = app => {
     // getLastWorkout method
     app.get('/api/workouts', (req, res) => {
-        res.json(testWorkouts);
+        workout.readAllWorkoutsPopulated(response => {
+            console.log(response);
+            res.json(response);
+        })
     });
 
     // addExercise method
     app.put('/api/workouts/:id', (req, res) => {
-        let workoutId = req.params.id;
-        testWorkouts[workoutId].exercises.push(req.body);
-
-        // Update duration
-        testWorkouts[workoutId].totalDuration += req.body.duration;
-
-        res.json(req.body);
+        createExerciseOfType(req.body, exercise => {
+            // Insert into workout
+            workout.insertExercise(req.params.id, exercise, response => {
+                res.json(response);
+            });
+        });
     });
 
     // createWorkout method
     app.post('/api/workouts', (req, res) => {
-        let workoutId = testWorkouts.length;
-        testWorkouts.push(req.body);
-
-        // Workout Variables
-        testWorkouts[workoutId]._id = workoutId;
-        testWorkouts[workoutId].day = Date.now();
-        testWorkouts[workoutId].totalDuration = 0;
-        testWorkouts[workoutId].exercises = new Array();
-
-        res.json(testWorkouts[workoutId]);
+        workout.createWorkout(response => {
+            res.json(response);
+        });
     });
 
     // getWorkoutsInRange method
     app.get('/api/workouts/range', (req, res) => {
-        res.json(testWorkouts);
+        workout.readAllWorkoutsPopulated(response => {
+            res.json(response);
+        });
     });
-
-
 }
