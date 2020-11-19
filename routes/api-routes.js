@@ -1,9 +1,7 @@
 const ExerciseController = require('../controllers/exercise-controller.js');
 const WorkoutController = require('../controllers/workout-controller.js');
 
-// TEST DATA
-const testWorkouts = new Array();
-
+// Controller Objects
 const workout = new WorkoutController();
 const exercise = new ExerciseController();
 
@@ -17,13 +15,23 @@ module.exports = app => {
 
     // addExercise method
     app.put('/api/workouts/:id', (req, res) => {
-        let workoutId = req.params.id;
-        testWorkouts[workoutId].exercises.push(req.body);
 
-        // Update duration
-        testWorkouts[workoutId].totalDuration += req.body.duration;
+        console.log(req.body.type);
 
-        res.json(req.body);
+        if (req.body.type === "resistance") {
+            console.log("VIVA LA");
+        }
+        else if (req.body.type === "cardio") {
+            console.log("CARDI B");
+        }
+
+        // let workoutId = req.params.id;
+        // testWorkouts[workoutId].exercises.push(req.body);
+
+        // // Update duration
+        // testWorkouts[workoutId].totalDuration += req.body.duration;
+
+        // res.json(req.body);
     });
 
     // createWorkout method
@@ -37,7 +45,7 @@ module.exports = app => {
     app.get('/api/workouts/range', (req, res) => {
         workout.readAllWorkouts(response => {
             res.json(response);
-        })
+        });
     });
 
 

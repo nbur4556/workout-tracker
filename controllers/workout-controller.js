@@ -32,7 +32,7 @@ WorkoutController.prototype.updateWorkout = (id, updateBody, callback) => {
         .catch(err => { callback(err) });
 }
 
-WorkoutController.prototype.addToExercises = (id, exercise, callback) => {
+WorkoutController.prototype.insertExercise = (id, exercise, callback) => {
     database.Workout.findOne({ _id: id })
         .then(({ exercises }) => {
             exercises.push(exercise);
