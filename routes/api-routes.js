@@ -5,6 +5,20 @@ const WorkoutController = require('../controllers/workout-controller.js');
 const workout = new WorkoutController();
 const exercise = new ExerciseController();
 
+// Determines type of exercise and returns exercise object
+function createExerciseOfType(body, cb) {
+    if (body.type === "resistance") {
+        exercise.createResistanceExercise(body, response => {
+            cb(response);
+        });
+    }
+    else if (body.type === "cardio") {
+        exercise.createCardioExercise(body, response => {
+            cb(response);
+        });
+    }
+}
+
 module.exports = app => {
     // getLastWorkout method
     app.get('/api/workouts', (req, res) => {
@@ -15,23 +29,10 @@ module.exports = app => {
 
     // addExercise method
     app.put('/api/workouts/:id', (req, res) => {
-
-        console.log(req.body.type);
-
-        if (req.body.type === "resistance") {
-            console.log("VIVA LA");
-        }
-        else if (req.body.type === "cardio") {
-            console.log("CARDI B");
-        }
-
-        // let workoutId = req.params.id;
-        // testWorkouts[workoutId].exercises.push(req.body);
-
-        // // Update duration
-        // testWorkouts[workoutId].totalDuration += req.body.duration;
-
-        // res.json(req.body);
+        createExerciseOfType(req.body, exercise => {
+            console.log(exercise.type);
+            console.log(exercise);
+        });
     });
 
     // createWorkout method
