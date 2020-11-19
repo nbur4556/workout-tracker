@@ -20,6 +20,13 @@ WorkoutController.prototype.readAllWorkouts = callback => {
         .catch(err => { callback(err) });
 }
 
+WorkoutController.prototype.readAllWorkoutsPopulate = callback => {
+    database.Workout.find({})
+        .populate("exercises")
+        .then(data => { callback(data) })
+        .catch(err => { callback(err) });
+}
+
 WorkoutController.prototype.readWorkout = (id, callback) => {
     database.Workout.findOne({ _id: id })
         .then(data => { callback(data) })
@@ -33,17 +40,9 @@ WorkoutController.prototype.updateWorkout = (id, updateBody, callback) => {
 }
 
 WorkoutController.prototype.insertExercise = (id, exercise, callback) => {
-    database.Workout.findOne({ _id: id })
-        .then(({ exercises }) => {
-            exercises.push(exercise);
-
-            // Update Exercises in database
-            database.Workout.updateOne({ _id: id }, {
-                exercises: exercises
-            }).then(data => {
-                callback(data);
-            }).catch(err => { callback(err) });;
-
+    database.Workout.findOneAndUpdate({ _id: id }, { $push: { exercises: exercise } }, { new: true })
+        .then(data => {
+            callback(data);
         })
         .catch(err => { callback(err) });
 }

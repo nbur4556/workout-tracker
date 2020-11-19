@@ -22,7 +22,7 @@ function createExerciseOfType(body, cb) {
 module.exports = app => {
     // getLastWorkout method
     app.get('/api/workouts', (req, res) => {
-        workout.readAllWorkouts(response => {
+        workout.readAllWorkoutsPopulate(response => {
             res.json(response);
         })
     });
@@ -30,8 +30,10 @@ module.exports = app => {
     // addExercise method
     app.put('/api/workouts/:id', (req, res) => {
         createExerciseOfType(req.body, exercise => {
-            console.log(exercise.type);
-            console.log(exercise);
+            // Insert into workout
+            workout.insertExercise(req.params.id, exercise._id, response => {
+                res.json(response);
+            });
         });
     });
 
@@ -44,10 +46,8 @@ module.exports = app => {
 
     // getWorkoutsInRange method
     app.get('/api/workouts/range', (req, res) => {
-        workout.readAllWorkouts(response => {
+        workout.readAllWorkoutsPopulate(response => {
             res.json(response);
         });
     });
-
-
 }
