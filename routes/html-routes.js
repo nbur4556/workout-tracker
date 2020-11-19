@@ -11,6 +11,6 @@ module.exports = (app, __root) => {
 
     // Exercise Page
     app.get('/exercise', (req, res) => {
-        res.sendFile(`./exercise.html`);
+        res.sendFile(`${__root}/exercise.html`);
     });
 }
