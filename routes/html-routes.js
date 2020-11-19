@@ -1,6 +1,4 @@
-const __root = module.parent.path;
-
-module.exports = app => {
+module.exports = (app, __root) => {
     // Home Page
     app.get('/', (req, res) => {
         res.sendFile(`${__root}\\public\\index.html`);

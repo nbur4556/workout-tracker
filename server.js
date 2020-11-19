@@ -16,7 +16,7 @@ app.use(express.json());
 
 // Routes
 require('./routes/api-routes.js')(app);
-require('./routes/html-routes.js')(app);
+require('./routes/html-routes.js')(app, __dirname);
 
 // Server listen
 app.listen(PORT, () => {
