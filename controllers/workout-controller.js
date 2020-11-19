@@ -1,3 +1,4 @@
+const { Workout } = require('../models/database.js');
 const database = require('../models/database.js');
 
 const WorkoutController = function () { }
@@ -11,6 +12,12 @@ WorkoutController.prototype.createWorkout = callback => {
     })
         .then(data => { callback(data) })
         .catch(({ message }) => { callback(message) });
+}
+
+WorkoutController.prototype.readAllWorkouts = callback => {
+    database.Workout.find({})
+        .then(data => { callback(data) })
+        .catch(err => { callback(err) });
 }
 
 WorkoutController.prototype.readWorkout = (id, callback) => {

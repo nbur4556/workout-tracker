@@ -1,10 +1,18 @@
+const ExerciseController = require('../controllers/exercise-controller.js');
+const WorkoutController = require('../controllers/workout-controller.js');
+
 // TEST DATA
 const testWorkouts = new Array();
+
+const workout = new WorkoutController();
+const exercise = new ExerciseController();
 
 module.exports = app => {
     // getLastWorkout method
     app.get('/api/workouts', (req, res) => {
-        res.json(testWorkouts);
+        workout.readAllWorkouts(response => {
+            res.json(response);
+        })
     });
 
     // addExercise method
@@ -20,16 +28,9 @@ module.exports = app => {
 
     // createWorkout method
     app.post('/api/workouts', (req, res) => {
-        let workoutId = testWorkouts.length;
-        testWorkouts.push(req.body);
-
-        // Workout Variables
-        testWorkouts[workoutId]._id = workoutId;
-        testWorkouts[workoutId].day = Date.now();
-        testWorkouts[workoutId].totalDuration = 0;
-        testWorkouts[workoutId].exercises = new Array();
-
-        res.json(testWorkouts[workoutId]);
+        workout.createWorkout(response => {
+            res.json(response);
+        });
     });
 
     // getWorkoutsInRange method
