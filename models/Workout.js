@@ -8,13 +8,13 @@ const WorkoutSchema = new Schema({
     resistanceExercises: [
         {
             type: Schema.Types.ObjectId,
-            ref: "ResistanceExercises"
+            ref: "ResistanceExercise"
         }
     ],
     cardioExercises: [
         {
             type: Schema.Types.ObjectId,
-            ref: "CardioExercises"
+            ref: "CardioExercise"
         }
     ],
     totalDuration: Number

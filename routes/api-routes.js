@@ -22,7 +22,8 @@ function createExerciseOfType(body, cb) {
 module.exports = app => {
     // getLastWorkout method
     app.get('/api/workouts', (req, res) => {
-        workout.readAllWorkoutsPopulate(response => {
+        workout.readAllWorkoutsPopulated(response => {
+            console.log(response);
             res.json(response);
         })
     });

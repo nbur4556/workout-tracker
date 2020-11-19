@@ -18,7 +18,7 @@ WorkoutController.prototype.readAllWorkouts = callback => {
         .catch(err => { callback(err) });
 }
 
-WorkoutController.prototype.readAllWorkoutsPopulate = callback => {
+WorkoutController.prototype.readAllWorkoutsPopulated = callback => {
     database.Workout.find({})
         .populate("resistanceExercises")
         .populate("cardioExercises")
@@ -40,14 +40,14 @@ WorkoutController.prototype.updateWorkout = (id, updateBody, callback) => {
 
 WorkoutController.prototype.insertExercise = (id, exercise, callback) => {
     if (exercise.type === "resistance") {
-        database.Workout.findOneAndUpdate({ _id: id }, { $push: { resistanceExercises: exercise.id } }, { new: true })
+        database.Workout.findOneAndUpdate({ _id: id }, { $push: { resistanceExercises: exercise } }, { new: true })
             .then(data => {
                 callback(data);
             })
             .catch(err => { callback(err) });
     }
     else if (exercise.type === "cardio") {
-        database.Workout.findOneAndUpdate({ _id: id }, { $push: { cardioExercises: exercise.id } }, { new: true })
+        database.Workout.findOneAndUpdate({ _id: id }, { $push: { cardioExercises: exercise } }, { new: true })
             .then(data => {
                 callback(data);
             })
