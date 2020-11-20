@@ -56,13 +56,11 @@ WorkoutController.prototype.insertExercise = (id, exercise, callback) => {
     // Get total duration
     database.Workout.findOne({ _id: id })
         .then(({ totalDuration }) => {
-
             totalDuration += exercise.duration;
-            console.log(totalDuration);
 
             //Update Resistance Array
             if (exercise.type === "resistance") {
-                database.Workout.updateOne({ _id: id }, { $push: { resistanceExercises: exercise } }, { new: true })
+                database.Workout.updateOne({ _id: id }, { $push: { resistanceExercises: exercise }, totalDuration: totalDuration }, { new: true })
                     .then(data => {
                         callback(data);
                     })
@@ -70,7 +68,7 @@ WorkoutController.prototype.insertExercise = (id, exercise, callback) => {
             }
             //Update Cardio Array
             else if (exercise.type === "cardio") {
-                database.Workout.updateOne({ _id: id }, { $push: { cardioExercises: exercise } }, { new: true })
+                database.Workout.updateOne({ _id: id }, { $push: { cardioExercises: exercise }, totalDuration: totalDuration }, { new: true })
                     .then(data => {
                         callback(data);
                     })
