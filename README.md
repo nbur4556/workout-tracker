@@ -8,7 +8,9 @@
 
 The workout tracker allows the user to create workouts and populate them with exercises. The most current exercise is saved to be accessed later. The user is able to view stats from his workouts over a given date range.
 
-<!-- ![SCREENSHOT](SCREENSHOT PATH) -->
+![View of landing page](./assets/landing-page-screenshot.png)
+![View of adding an exercise to a workout](./assets/add-exercise-screenshot.png)
+![View of the workout dashboard](./assets/workout-dashboard-screenshot.png)
 
 ## Table of Contents
 
