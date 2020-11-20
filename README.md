@@ -26,7 +26,7 @@ The workout tracker allows the user to create workouts and populate them with ex
 
 Clone from github repo. Navigate to root directory and run npm install.
 
-<!-- INCLUDE MONGO DB INFORMATION -->
+Create a MongoDB database. Add the database route to the environment variable _"MONGODB_URI"_ in your hosting environment.
 
 ## Usage
 
