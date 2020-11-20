@@ -28,7 +28,25 @@ Clone from github repo. Navigate to root directory and run npm install.
 
 ## Usage
 
-<!-- INCLUDE USAGE INFORMATION -->
+From the landing page, the application will show the most current workout from the database. The user can either continue the current workout, or create a new workout.
+
+#### New Workout
+
+Click the green _"New Workout"_ button. Choose either a resistance or cardio exercise from the exercise type dropdown. Fill in the required information for the chosen exercise in the next form.
+
+#### Continue Workout
+
+Click the blue _"Continue Workout"_ button. You will again be brought to choose either a resistance or cardio exercise from the exercise type dropdown.
+
+#### Adding an Exercise
+
+To add an exercise, and continue adding exercises, fill out the form and click the _"Add Exercise"_ button. To add an exercise and return to the landing page, fill out the form and click the _"Complete"_ button.
+
+If you do not want to add the current exercise, you can always navigate back to the landing page using the _"Fitness Tracker"_ link in the navigation bar.
+
+##### Dashboard
+
+Click the _"Dashboard"_ link in the navigation bar to navigate to the Dashboard page. This will show stats and graphs of the exercises in the database. Return to the landing page by clicking the _"Fitness Tracker"_ link in the navigation bar.
 
 ## Technologies
 
