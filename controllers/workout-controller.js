@@ -53,20 +53,29 @@ WorkoutController.prototype.updateWorkout = (id, updateBody, callback) => {
 }
 
 WorkoutController.prototype.insertExercise = (id, exercise, callback) => {
-    if (exercise.type === "resistance") {
-        database.Workout.findOneAndUpdate({ _id: id }, { $push: { resistanceExercises: exercise } }, { new: true })
-            .then(data => {
-                callback(data);
-            })
-            .catch(err => { callback(err) });
-    }
-    else if (exercise.type === "cardio") {
-        database.Workout.findOneAndUpdate({ _id: id }, { $push: { cardioExercises: exercise } }, { new: true })
-            .then(data => {
-                callback(data);
-            })
-            .catch(err => { callback(err) });
-    }
+    // Get total duration
+    database.Workout.findOne({ _id: id })
+        .then(({ totalDuration }) => {
+            totalDuration += exercise.duration;
+
+            //Update Resistance Array
+            if (exercise.type === "resistance") {
+                database.Workout.updateOne({ _id: id }, { $push: { resistanceExercises: exercise }, totalDuration: totalDuration }, { new: true })
+                    .then(data => {
+                        callback(data);
+                    })
+                    .catch(err => { callback(err) });
+            }
+            //Update Cardio Array
+            else if (exercise.type === "cardio") {
+                database.Workout.updateOne({ _id: id }, { $push: { cardioExercises: exercise }, totalDuration: totalDuration }, { new: true })
+                    .then(data => {
+                        callback(data);
+                    })
+                    .catch(err => { callback(err) });
+            }
+        })
+        .catch(err => { callback(err) });
 }
 
 WorkoutController.prototype.deleteWorkout = (id, callback) => {
