@@ -50,7 +50,13 @@ Click the _"Dashboard"_ link in the navigation bar to navigate to the Dashboard 
 
 ## Technologies
 
-<!-- INCLUDE TECHNOLOGIES INFORMATION -->
+* HTML
+* CSS
+* Javascript
+* NodeJS
+* Express
+* MongoDB
+* Mongoose
 
 ## License
 
