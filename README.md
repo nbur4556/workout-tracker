@@ -2,7 +2,7 @@
 
 # Workout Tracker
 
-<!-- [View Workout Tracker](LINK) -->
+[View Workout Tracker](https://workittracker.herokuapp.com/)
 
 ## Description
 
