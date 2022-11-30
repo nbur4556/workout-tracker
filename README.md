@@ -2,8 +2,6 @@
 
 # Workout Tracker
 
-[View Workout Tracker](https://workittracker.herokuapp.com/)
-
 ## Description
 
 The workout tracker allows the user to create workouts and populate them with exercises. The most current exercise is saved to be accessed later. The user is able to view stats from his workouts over a given date range.
